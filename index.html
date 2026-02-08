@@ -3,300 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV Profesional - Shofi Lutfia Juliana</title>
+    <title>CV Shofi Lutfia Juliana</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:italic,wght@400;700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-dark: #0f172a;
-            --accent-gold: #c5a059;
-            --soft-gold: #e2d1b3;
-            --bg-light: #f8fafc;
+            --primary: #6b8e23; /* Sage Green */
+            --secondary: #fdfaf5; /* Cream */
+            --accent: #4a5d23;
+            --text-main: #2d3436;
+            --soft-pink: #ffdae0;
         }
+
         body {
-            background-color: var(--bg-light);
-            font-family: 'Inter', sans-serif;
-            color: #334155;
+            font-family: 'Quicksand', sans-serif; /* Font yang lebih bulat dan lucu */
+            background-color: var(--secondary);
+            color: var(--text-main);
             overflow-x: hidden;
         }
 
-        /* Animasi Partikel Emas Melayang (Elegan) */
-        .sparkle {
-            position: fixed;
-            background: radial-gradient(circle, var(--accent-gold) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            opacity: 0.4;
-            z-index: -1;
-            animation: floatGold 15s infinite linear;
+        .serif {
+            font-family: 'Lora', serif;
         }
 
-        @keyframes floatGold {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            50% { opacity: 0.4; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        /* Animasi Lembut Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
-        /* Stiker Kucing Minimalis & Elegan (Lucu) */
-        .cute-mascot {
-            position: absolute;
-            bottom: -20px;
-            right: 20px;
-            width: 80px;
-            z-index: 10;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-        }
-        .cute-mascot:hover {
-            transform: translateY(-15px) rotate(5deg);
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .elegant-title {
-            font-family: 'Cinzel', serif;
-            letter-spacing: 2px;
-        }
-        .sidebar-dark {
-            background-color: var(--primary-dark);
-            color: #f1f5f9;
-        }
-        .timeline-dot {
-            width: 12px;
-            height: 12px;
-            background-color: var(--accent-gold);
-            border-radius: 50%;
-            position: absolute;
-            left: -7px;
-            top: 5px;
-            box-shadow: 0 0 10px var(--accent-gold);
-        }
-        .card-elegant {
+        .soft-card {
             background: white;
-            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.1);
+            border-radius: 30px;
+            border: 2px solid rgba(107, 142, 35, 0.05);
+            transition: all 0.3s ease;
             position: relative;
         }
-        .skill-badge {
-            background: #f1f5f9;
-            border: 1px solid #e2e8f0;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--primary-dark);
-            transition: all 0.3s ease;
-        }
-        .skill-badge:hover {
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
-            transform: scale(1.05);
+
+        .soft-card:hover {
+            box-shadow: 0 15px 30px rgba(107, 142, 35, 0.1);
+            border-color: var(--primary);
+            transform: scale(1.01);
         }
 
-        /* Animasi Halus untuk Section */
-        .fade-in {
-            animation: fadeInMove 1s ease forwards;
-        }
-        @keyframes fadeInMove {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Progress Bar */
+        .progress-bar {
+            height: 10px;
+            background: #f0f0f0;
+            border-radius: 20px;
+            overflow: hidden;
         }
 
-        /* Foto Profil Hover */
-        .profile-container:hover img {
-            transform: scale(1.1);
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary), #a2c11c);
+            width: 0;
+            transition: width 1.5s ease-in-out;
         }
-        .profile-container img {
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+        /* Floating Animation */
+        .floating {
+            animation: float 3s ease-in-out infinite;
         }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Floating Elements */
+        .decor-item {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+            animation: drift 10s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes drift {
+            from { transform: translateY(100vh) rotate(0deg); }
+            to { transform: translateY(-10vh) rotate(360deg); }
+        }
+
+        /* Custom Decoration Shapes */
+        .flower-icon { color: #ffb7c5; }
+        .star-icon { color: #ffd700; }
+        .heart-icon { color: #ff6b6b; }
+
+        /* Timeline Dot */
+        .dot {
+            height: 15px;
+            width: 15px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 0 10px rgba(107, 142, 35, 0.3);
+        }
+
     </style>
 </head>
-<body class="py-10 px-4">
+<body class="p-4 md:p-8">
 
-    <!-- Efek Partikel Emas -->
-    <script>
-        for (let i = 0; i < 20; i++) {
-            let div = document.createElement('div');
-            div.className = 'sparkle';
-            let size = Math.random() * 6 + 2;
-            div.style.width = size + 'px';
-            div.style.height = size + 'px';
-            div.style.left = Math.random() * 100 + 'vw';
-            div.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            div.style.animationDelay = (Math.random() * 10) + 's';
-            document.body.appendChild(div);
-        }
-    </script>
+    <!-- Elemen Dekoratif Melayang (Bunga, Love, Bintang) -->
+    <div id="decorations-container"></div>
 
-    <div class="max-w-5xl mx-auto card-elegant rounded-xl overflow-hidden flex flex-col md:flex-row shadow-2xl fade-in">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 relative">
         
-        <!-- Maskot Lucu (Kucing Intip) -->
-        <div class="cute-mascot" title="Halo Shofi!">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path d="M40 100 Q40 40 100 40 Q160 40 160 100 L160 160 L40 160 Z" fill="#c5a059" opacity="0.9" />
-                <circle cx="75" cy="90" r="8" fill="#0f172a" />
-                <circle cx="125" cy="90" r="8" fill="#0f172a" />
-                <path d="M90 110 Q100 120 110 110" fill="none" stroke="#0f172a" stroke-width="3" stroke-linecap="round" />
-                <path d="M40 60 L20 20 L70 45" fill="#0f172a" />
-                <path d="M160 60 L180 20 L130 45" fill="#0f172a" />
-            </svg>
-        </div>
-
-        <!-- Sidebar -->
-        <aside class="w-full md:w-1/3 sidebar-dark p-8 md:p-10 relative">
-            <!-- Profile Photo -->
-            <div class="text-center mb-8">
-                <div class="inline-block relative profile-container">
-                    <div class="w-40 h-40 rounded-full border-4 border-accent-gold overflow-hidden mx-auto bg-slate-800 shadow-lg">
+        <!-- Sidebar Kiri -->
+        <aside class="lg:col-span-4 space-y-6 reveal">
+            <div class="soft-card p-8 text-center relative overflow-hidden group">
+                <!-- Decorative background shapes -->
+                <div class="absolute -top-10 -right-10 w-32 h-32 bg-pink-100 rounded-full opacity-50"></div>
+                <div class="absolute top-0 left-0 w-full h-24 bg-[#f0f4e8]"></div>
+                
+                <div class="relative z-10">
+                    <div class="w-36 h-36 mx-auto mb-4 p-2 bg-white rounded-full shadow-lg floating">
                         <img src="WhatsApp Image 2026-02-05 at 20.10.43.jpeg" 
-                             alt="Foto Shofi Lutfia Juliana" 
-                             class="w-full h-full object-cover">
+                             alt="Foto Shofi Lutfia" 
+                             class="w-full h-full object-cover rounded-full border-4 border-[#f0f4e8]">
                     </div>
-                    <div class="absolute -bottom-2 -right-2 bg-accent-gold text-primary-dark w-10 h-10 rounded-full flex items-center justify-center border-4 border-primary-dark animate-bounce">
-                        <i class="fas fa-pen-nib text-xs"></i>
+                    <h1 class="serif text-2xl font-bold text-slate-800">Shofi Lutfia Juliana <i class="fas fa-heart text-xs heart-icon"></i></h1>
+                    <p class="text-sm text-green-700 font-bold mb-6 tracking-wide">Learner & Problem Solver</p>
+                    
+                    <div class="space-y-4 text-left border-t border-dashed pt-6">
+                        <div class="flex items-center gap-4 group/item hover:translate-x-1 transition-transform">
+                            <div class="w-10 h-10 bg-[#f0f4e8] text-green-800 rounded-2xl flex items-center justify-center text-sm shadow-sm">
+                                <i class="fas fa-birthday-cake text-pink-400"></i>
+                            </div>
+                            <span class="text-xs font-bold">12 Juli 2008</span>
+                        </div>
+                        <div class="flex items-center gap-4 group/item hover:translate-x-1 transition-transform">
+                            <div class="w-10 h-10 bg-[#f0f4e8] text-green-800 rounded-2xl flex items-center justify-center text-sm shadow-sm">
+                                <i class="fas fa-phone text-blue-400"></i>
+                            </div>
+                            <span class="text-xs font-bold">+62 838 2742 5476</span>
+                        </div>
+                        <div class="flex items-center gap-4 group/item hover:translate-x-1 transition-transform">
+                            <div class="w-10 h-10 bg-[#f0f4e8] text-green-800 rounded-2xl flex items-center justify-center text-sm shadow-sm">
+                                <i class="fas fa-map-marker-alt text-orange-400"></i>
+                            </div>
+                            <span class="text-[10px] leading-tight font-bold">Ciparay, Kab. Bandung</span>
+                        </div>
+                        <div class="flex items-center gap-4 group/item hover:translate-x-1 transition-transform">
+                            <div class="w-10 h-10 bg-[#f0f4e8] text-green-800 rounded-2xl flex items-center justify-center text-sm shadow-sm">
+                                <i class="fab fa-instagram text-purple-400"></i>
+                            </div>
+                            <span class="text-xs font-bold">@filutfiaa</span>
+                        </div>
                     </div>
                 </div>
-                <h1 class="elegant-title text-xl mt-6 text-white uppercase tracking-wider">Shofi Lutfia Juliana</h1>
-                <p class="text-accent-gold text-[10px] font-light mt-1 tracking-[0.3em] opacity-80">CURRICULUM VITAE</p>
             </div>
 
-            <div class="space-y-8">
-                <!-- Kontak -->
-                <section>
-                    <h3 class="text-accent-gold text-[10px] font-bold uppercase tracking-widest border-b border-slate-700 pb-2 mb-4 flex items-center gap-2">
-                        <i class="fas fa-paper-plane text-[8px]"></i> Hubungi Saya
-                    </h3>
-                    <ul class="space-y-4 text-sm font-light">
-                        <li class="flex items-center gap-4 group cursor-default">
-                            <i class="fas fa-calendar-day text-accent-gold transition-transform group-hover:scale-125"></i> 12 Juli 2008
-                        </li>
-                        <li class="flex items-center gap-4 group cursor-default">
-                            <i class="fas fa-phone-alt text-accent-gold transition-transform group-hover:scale-125"></i> +62 838 2742 5476
-                        </li>
-                        <li class="flex items-start gap-4 group cursor-default">
-                            <i class="fas fa-map-marked-alt text-accent-gold mt-1 transition-transform group-hover:scale-125"></i>
-                            <span class="leading-relaxed">Kp. Lebakbiru, Desa Ciheulang, Ciparay, Bandung</span>
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- Media Sosial -->
-                <section>
-                    <h3 class="text-accent-gold text-[10px] font-bold uppercase tracking-widest border-b border-slate-700 pb-2 mb-4">Sosial Media</h3>
-                    <ul class="space-y-4 text-sm font-light">
-                        <li>
-                            <a href="#" class="flex items-center gap-4 hover:text-accent-gold transition-all hover:translate-x-2">
-                                <i class="fab fa-instagram text-accent-gold text-lg"></i> @filutfiaa
-                            </a>
-                        </li>
-                        <li class="opacity-30">
-                            <span class="flex items-center gap-4">
-                                <i class="fab fa-facebook text-accent-gold text-lg"></i> Facebook (-)
-                            </span>
-                        </li>
-                    </ul>
-                </section>
-
-                <!-- Keahlian -->
-                <section>
-                    <h3 class="text-accent-gold text-[10px] font-bold uppercase tracking-widest border-b border-slate-700 pb-2 mb-4">Keahlian</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge bg-slate-800 text-slate-300 border-slate-700">Problem Solving</span>
-                        <span class="skill-badge bg-slate-800 text-slate-300 border-slate-700">MS Word</span>
-                        <span class="skill-badge bg-slate-800 text-slate-300 border-slate-700">Detail Oriented</span>
+            <!-- Keahlian -->
+            <div class="soft-card p-8">
+                <h3 class="serif text-lg font-bold mb-6 flex items-center gap-2">
+                    <i class="fas fa-star star-icon"></i> Bahasa & Keahlian
+                </h3>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between text-[11px] mb-2 font-bold uppercase text-slate-500">
+                            <span>Bahasa Indonesia</span>
+                            <span>Native ✨</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" data-width="100%"></div></div>
                     </div>
-                </section>
+                    <div>
+                        <div class="flex justify-between text-[11px] mb-2 font-bold uppercase text-slate-500">
+                            <span>Bahasa Inggris</span>
+                            <span>Basic 📖</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" data-width="50%"></div></div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 flex flex-wrap gap-2">
+                    <span class="px-4 py-2 bg-pink-50 text-pink-700 text-[10px] font-bold uppercase rounded-full border border-pink-100">Teliti 🔍</span>
+                    <span class="px-4 py-2 bg-blue-50 text-blue-700 text-[10px] font-bold uppercase rounded-full border border-blue-100">Problem Solver 🧩</span>
+                    <span class="px-4 py-2 bg-yellow-50 text-yellow-700 text-[10px] font-bold uppercase rounded-full border border-yellow-100">Disiplin ✅</span>
+                </div>
             </div>
         </aside>
 
         <!-- Main Content -->
-        <main class="flex-1 p-8 md:p-16 relative">
+        <main class="lg:col-span-8 space-y-8">
             
-            <!-- Ringkasan -->
-            <section class="mb-14">
-                <div class="flex items-center gap-3 mb-6">
-                    <h2 class="elegant-title text-2xl text-slate-800">Profil Saya</h2>
-                    <div class="h-[1px] flex-1 bg-slate-100"></div>
-                </div>
-                <p class="text-slate-600 leading-relaxed font-light text-lg">
-                    Seorang individu berdedikasi dengan kecintaan pada literasi dan eksplorasi visual. Memiliki kekuatan pada <span class="text-slate-900 font-semibold underline decoration-accent-gold decoration-2 underline-offset-8">ketelitian yang mendalam</span> dalam memecahkan setiap permasalahan. Senantiasa terbuka pada hal-hal baru yang menantang kreativitas dan kecakapan profesional. ✨
+            <!-- Tentang Saya -->
+            <section class="soft-card p-8 reveal group">
+                <i class="fas fa-sparkles absolute top-4 right-4 text-yellow-300 opacity-50 group-hover:animate-spin"></i>
+                <h2 class="serif text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    Profil Profesional <i class="fas fa-smile-beam flower-icon"></i>
+                </h2>
+                <p class="text-gray-600 leading-relaxed text-sm">
+                    "Saya adalah pribadi yang <b>suka membaca</b> dan memiliki ketertarikan tinggi dalam <b>memecahkan masalah</b> dengan teliti sampai selesai. Saya senang menonton untuk memperluas wawasan dan selalu memiliki keinginan kuat untuk mencoba hal-hal baru yang bermanfaat bagi pengembangan diri saya."
                 </p>
             </section>
 
-            <!-- Pengalaman -->
-            <section class="mb-14">
-                <div class="flex items-center gap-3 mb-8">
-                    <h2 class="elegant-title text-2xl text-slate-800">Pengalaman</h2>
-                    <div class="h-[1px] flex-1 bg-slate-100"></div>
-                </div>
-                <div class="relative border-l border-slate-100 pl-8 space-y-12">
-                    <div class="transition-all hover:translate-x-2">
-                        <div class="timeline-dot"></div>
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-3">
-                            <h4 class="font-bold text-slate-800 text-lg">Paskibra <span class="text-accent-gold text-xs font-normal ml-2">SMA</span></h4>
-                            <span class="text-slate-400 text-[10px] font-bold tracking-widest">2023 — 2026</span>
+            <!-- Pengalaman Organisasi -->
+            <section class="soft-card p-8 reveal">
+                <h2 class="serif text-2xl font-bold text-slate-800 mb-8">Pengalaman Organisasi <i class="fas fa-users-crown text-sm text-green-500"></i></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 border-2 border-green-100 bg-green-50/30 rounded-3xl hover:bg-green-50 transition-colors">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-[10px] font-bold bg-green-600 text-white px-2 py-0.5 rounded-lg uppercase">SMA</span>
                         </div>
-                        <p class="text-sm text-slate-500 font-light leading-relaxed">Melatih kedisiplinan dan tanggung jawab tinggi. Terbiasa dengan ritme kerja yang terstruktur dan kepatuhan terhadap standar operasional organisasi.</p>
+                        <h4 class="font-bold text-md text-green-800">Paskibra</h4>
+                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">Melatih kedisiplinan dan tanggung jawab melalui latihan rutin yang menantang.</p>
                     </div>
-
-                    <div class="transition-all hover:translate-x-2">
-                        <div class="timeline-dot"></div>
-                        <div class="flex flex-col md:flex-row md:justify-between md:items-baseline mb-3">
-                            <h4 class="font-bold text-slate-800 text-lg">Ekskul Komputer <span class="text-accent-gold text-xs font-normal ml-2">SMP</span></h4>
-                            <span class="text-slate-400 text-[10px] font-bold tracking-widest">2020 — 2023</span>
+                    <div class="p-6 border-2 border-blue-100 bg-blue-50/30 rounded-3xl hover:bg-blue-50 transition-colors">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-[10px] font-bold bg-blue-500 text-white px-2 py-0.5 rounded-lg uppercase">SMP</span>
                         </div>
-                        <p class="text-sm text-slate-500 font-light leading-relaxed">Menguasai dasar-dasar produktivitas digital dan Microsoft Word. Mengembangkan keterampilan dalam penyusunan laporan dan manajemen dokumen.</p>
+                        <h4 class="font-bold text-md text-blue-800">Ekskul Komputer</h4>
+                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">Mempelajari Microsoft Word dan dasar-dasar digital secara antusias.</p>
+                    </div>
+                    <div class="p-6 border-2 border-pink-100 bg-pink-50/30 rounded-3xl hover:bg-pink-50 transition-colors md:col-span-2">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-[10px] font-bold bg-pink-500 text-white px-2 py-0.5 rounded-lg uppercase">SD</span>
+                        </div>
+                        <h4 class="font-bold text-md text-pink-800">Pramuka</h4>
+                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">Membangun fondasi kerja sama tim dan kemandirian sejak dini.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Pendidikan Grid -->
-            <section class="mb-14">
-                <div class="flex items-center gap-3 mb-8">
-                    <h2 class="elegant-title text-2xl text-slate-800">Pendidikan</h2>
-                    <div class="h-[1px] flex-1 bg-slate-100"></div>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="p-4 border border-slate-50 rounded-lg text-center hover:bg-slate-50 transition-colors">
-                        <p class="text-accent-gold text-[8px] font-bold mb-1 uppercase">Lulus 2026</p>
-                        <h4 class="text-xs font-bold text-slate-700">SMA</h4>
+            <!-- Pendidikan & Sertifikat -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <section class="soft-card p-8 reveal">
+                    <h3 class="serif text-xl font-bold mb-6 flex items-center gap-2">Pendidikan <i class="fas fa-graduation-cap text-gray-400"></i></h3>
+                    <div class="space-y-8 relative border-l-2 border-dashed border-green-100 ml-2">
+                        <div class="relative pl-8 group">
+                            <span class="absolute -left-[9px] top-1 dot bg-green-500"></span>
+                            <h4 class="text-sm font-bold text-slate-800">SMA (Lulus 2026)</h4>
+                            <p class="text-[10px] text-gray-400 font-bold italic">Saat ini sedang menempuh studi</p>
+                        </div>
+                        <div class="relative pl-8 group">
+                            <span class="absolute -left-[9px] top-1 dot bg-pink-300 shadow-pink-200"></span>
+                            <h4 class="text-sm font-bold text-slate-800">SMP (Lulus 2023)</h4>
+                        </div>
+                        <div class="relative pl-8 group">
+                            <span class="absolute -left-[9px] top-1 dot bg-blue-300 shadow-blue-200"></span>
+                            <h4 class="text-sm font-bold text-slate-800">SD (Lulus 2020)</h4>
+                        </div>
                     </div>
-                    <div class="p-4 border border-slate-50 rounded-lg text-center hover:bg-slate-50 transition-colors">
-                        <p class="text-accent-gold text-[8px] font-bold mb-1 uppercase">Lulus 2023</p>
-                        <h4 class="text-xs font-bold text-slate-700">SMP</h4>
-                    </div>
-                    <div class="p-4 border border-slate-50 rounded-lg text-center hover:bg-slate-50 transition-colors">
-                        <p class="text-accent-gold text-[8px] font-bold mb-1 uppercase">Lulus 2020</p>
-                        <h4 class="text-xs font-bold text-sm text-slate-700">SD</h4>
-                    </div>
-                    <div class="p-4 border border-slate-50 rounded-lg text-center hover:bg-slate-50 transition-colors">
-                        <p class="text-accent-gold text-[8px] font-bold mb-1 uppercase">Lulus 2013</p>
-                        <h4 class="text-xs font-bold text-slate-700">TK</h4>
-                    </div>
-                </div>
-            </section>
+                </section>
 
-            <!-- Award -->
-            <section>
-                <div class="p-6 bg-slate-50 rounded-xl border border-slate-100 flex items-center gap-6 group hover:border-accent-gold transition-colors">
-                    <div class="text-3xl text-accent-gold transition-transform group-hover:rotate-12">
-                        <i class="fas fa-certificate"></i>
+                <div class="space-y-8 reveal">
+                    <div class="soft-card p-8 bg-[#fff9fa] border-pink-100">
+                        <h3 class="serif text-lg font-bold mb-4 flex items-center gap-2">Sertifikat <i class="fas fa-award text-yellow-500"></i></h3>
+                        <div class="flex items-center gap-4 p-3 bg-white rounded-2xl shadow-sm border border-pink-50">
+                            <i class="fas fa-palette text-pink-400 text-xl"></i>
+                            <div>
+                                <p class="text-sm font-bold text-slate-800">Kaligrafi Putri</p>
+                                <p class="text-[10px] uppercase text-gray-400 font-bold">SD Achievement</p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <h4 class="font-bold text-slate-800">Juara Kaligrafi Putri</h4>
-                        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">Sertifikat Sekolah Dasar</p>
+                    <div class="soft-card p-8 bg-[#f5fbf0] border-green-100">
+                        <h3 class="serif text-lg font-bold mb-4 flex items-center gap-2">Hobi <i class="fas fa-mug-hot text-brown-400"></i></h3>
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-2xl bg-green-500 text-white flex items-center justify-center shadow-lg">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <span class="font-bold text-sm text-green-800 uppercase tracking-wider">Membaca Buku</span>
+                        </div>
                     </div>
                 </div>
-            </section>
+            </div>
+
+            <!-- Footer -->
+            <footer class="text-center py-6 reveal group">
+                <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 group-hover:text-pink-400 transition-colors">
+                    Shofi Lutfia Juliana <i class="fas fa-heart"></i> 2026
+                </p>
+                <div class="mt-2 text-xs flex justify-center gap-2 opacity-30 group-hover:opacity-100 transition-opacity">
+                    <i class="fas fa-star star-icon"></i>
+                    <i class="fas fa-heart heart-icon"></i>
+                    <i class="fas fa-seedling flower-icon"></i>
+                </div>
+            </footer>
         </main>
     </div>
 
-    <!-- Minimal Footer -->
-    <footer class="mt-12 text-center">
-        <p class="text-slate-300 text-[9px] uppercase tracking-[0.6em] flex justify-center items-center gap-4">
-            <span class="h-[1px] w-8 bg-slate-200"></span>
-            SHOFY LUTFI JULIANA &bull; 2026
-            <span class="h-[1px] w-8 bg-slate-200"></span>
-        </p>
-    </footer>
+    <script>
+        // Membuat elemen dekorasi melayang
+        const container = document.getElementById('decorations-container');
+        const icons = ['fa-heart', 'fa-star', 'fa-seedling', 'fa-smile', 'fa-leaf'];
+        const colors = ['#ffb7c5', '#ffd700', '#ff6b6b', '#6b8e23', '#a2c11c'];
 
+        function createDecoration() {
+            const iconClass = icons[Math.floor(Math.random() * icons.length)];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const decor = document.createElement('i');
+            
+            decor.className = `fas ${iconClass} decor-item`;
+            decor.style.left = Math.random() * 100 + 'vw';
+            decor.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            decor.style.color = color;
+            decor.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            
+            container.appendChild(decor);
+            
+            setTimeout(() => {
+                decor.remove();
+            }, 10000);
+        }
+
+        setInterval(createDecoration, 1000);
+
+        // Animasi Reveal saat Scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                    
+                    const bars = reveals[i].querySelectorAll(".progress-fill");
+                    bars.forEach(bar => {
+                        bar.style.width = bar.getAttribute("data-width");
+                    });
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("load", reveal);
+    </script>
 </body>
 </html>
