@@ -6,32 +6,121 @@
     <title>CV Shofi Lutfia Juliana</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:italic,wght@400;700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6b8e23; /* Sage Green */
-            --secondary: #fdfaf5; /* Cream */
-            --accent: #4a5d23;
-            --text-main: #2d3436;
-            --soft-pink: #ffdae0;
+            --mint: #e0f2f1;
+            --deep-mint: #26a69a;
+            --peach: #ffab91;
+            --soft-pink: #fce4ec;
+            --soft-white: #fafdfb;
         }
 
         body {
-            font-family: 'Quicksand', sans-serif; /* Font yang lebih bulat dan lucu */
-            background-color: var(--secondary);
-            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--soft-white);
+            color: #37474f;
             overflow-x: hidden;
         }
 
-        .serif {
-            font-family: 'Lora', serif;
+        .serif-title {
+            font-family: 'DM Serif Display', serif;
         }
 
-        /* Animasi Lembut Reveal */
+        .cute-font {
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        /* Animasi Latar Belakang Blob */
+        .bg-blob {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(38, 166, 154, 0.15) 0%, rgba(255, 171, 145, 0.1) 100%);
+            filter: blur(80px);
+            z-index: -2;
+            border-radius: 50%;
+            animation: move 25s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-20%, -20%); }
+            to { transform: translate(30%, 30%); }
+        }
+
+        /* Partikel Melayang (Bunga, Love, Bintang) */
+        .particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: -1;
+            animation: fly linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes fly {
+            0% { transform: translateY(100vh) rotate(0deg) translateX(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) rotate(360deg) translateX(50px); opacity: 0; }
+        }
+
+        /* Kartu Kaca */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            border-radius: 40px;
+            box-shadow: 0 10px 40px rgba(38, 166, 154, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 20px 50px rgba(38, 166, 154, 0.15);
+            border-color: var(--peach);
+        }
+
+        /* Foto dengan Efek Pulse */
+        .photo-container {
+            position: relative;
+            padding: 10px;
+        }
+
+        .photo-container::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px dashed var(--peach);
+            border-radius: 50%;
+            animation: spin 15s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Progress Bar Cantik */
+        .progress-bar {
+            height: 12px;
+            background: #f1f8e9;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4db6ac, #ffccbc);
+            width: 0;
+            transition: width 2s cubic-bezier(0.47, 0, 0.745, 0.715);
+        }
+
+        /* Animasi Muncul */
         .reveal {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
         }
 
         .reveal.active {
@@ -39,287 +128,275 @@
             transform: translateY(0);
         }
 
-        .soft-card {
-            background: white;
-            border-radius: 30px;
-            border: 2px solid rgba(107, 142, 35, 0.05);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .soft-card:hover {
-            box-shadow: 0 15px 30px rgba(107, 142, 35, 0.1);
-            border-color: var(--primary);
-            transform: scale(1.01);
-        }
-
-        /* Progress Bar */
-        .progress-bar {
-            height: 10px;
-            background: #f0f0f0;
+        /* Badge Lucu */
+        .cute-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 16px;
             border-radius: 20px;
-            overflow: hidden;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: 0.3s;
         }
 
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(to right, var(--primary), #a2c11c);
-            width: 0;
-            transition: width 1.5s ease-in-out;
+        .cute-badge:hover {
+            transform: scale(1.1) rotate(2deg);
+            background: var(--mint);
         }
 
-        /* Floating Animation */
-        .floating {
-            animation: float 3s ease-in-out infinite;
+        .floating-hobi {
+            animation: bounce 2s infinite ease-in-out;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
         }
-
-        /* Floating Elements */
-        .decor-item {
-            position: fixed;
-            pointer-events: none;
-            z-index: -1;
-            animation: drift 10s linear infinite;
-            opacity: 0.3;
-        }
-
-        @keyframes drift {
-            from { transform: translateY(100vh) rotate(0deg); }
-            to { transform: translateY(-10vh) rotate(360deg); }
-        }
-
-        /* Custom Decoration Shapes */
-        .flower-icon { color: #ffb7c5; }
-        .star-icon { color: #ffd700; }
-        .heart-icon { color: #ff6b6b; }
-
-        /* Timeline Dot */
-        .dot {
-            height: 15px;
-            width: 15px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            display: inline-block;
-            position: relative;
-            z-index: 10;
-            box-shadow: 0 0 10px rgba(107, 142, 35, 0.3);
-        }
-
     </style>
 </head>
-<body class="p-4 md:p-8">
+<body class="p-4 md:p-12">
 
-    <!-- Elemen Dekoratif Melayang (Bunga, Love, Bintang) -->
-    <div id="decorations-container"></div>
+    <!-- Blobs Latar Belakang -->
+    <div class="bg-blob" style="top: -100px; left: -100px;"></div>
+    <div class="bg-blob" style="bottom: -100px; right: -100px; animation-delay: -5s;"></div>
+    
+    <!-- Wadah Partikel (Akan diisi via JS) -->
+    <div id="particles-container"></div>
 
-    <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 relative">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
         
-        <!-- Sidebar Kiri -->
-        <aside class="lg:col-span-4 space-y-6 reveal">
-            <div class="soft-card p-8 text-center relative overflow-hidden group">
-                <!-- Decorative background shapes -->
-                <div class="absolute -top-10 -right-10 w-32 h-32 bg-pink-100 rounded-full opacity-50"></div>
-                <div class="absolute top-0 left-0 w-full h-24 bg-[#f0f4e8]"></div>
-                
-                <div class="relative z-10">
-                    <div class="w-36 h-36 mx-auto mb-4 p-2 bg-white rounded-full shadow-lg floating">
+        <!-- Sidebar Profil -->
+        <aside class="lg:col-span-4 space-y-8 reveal">
+            <div class="glass-card p-10 text-center relative overflow-hidden">
+                <!-- Foto Frame -->
+                <div class="photo-container w-48 h-48 mx-auto mb-6">
+                    <div class="w-full h-full rounded-full p-2 bg-white relative z-10 shadow-lg">
                         <img src="WhatsApp Image 2026-02-05 at 20.10.43.jpeg" 
-                             alt="Foto Shofi Lutfia" 
-                             class="w-full h-full object-cover rounded-full border-4 border-[#f0f4e8]">
+                             alt="Shofi Lutfia Juliana" 
+                             class="w-full h-full object-cover rounded-full">
                     </div>
-                    <h1 class="serif text-2xl font-bold text-slate-800">Shofi Lutfia Juliana <i class="fas fa-heart text-xs heart-icon"></i></h1>
-                    <p class="text-sm text-green-700 font-bold mb-6 tracking-wide">Learner & Problem Solver</p>
-                    
-                    <div class="space-y-4 text-left border-t border-dashed pt-6">
-                        <div class="flex items-center gap-4 group/item hover:translate-x-1 transition-transform">
-                            <div class="w-10 h-10 bg-[#f0f4e8] text-green-800 rounded-2xl flex items-center justify-center text-sm shadow-sm">
-                                <i class="fas fa-birthday-cake text-pink-400"></i>
-                            </div>
-                            <span class="text-xs font-bold">12 Juli 2008</span>
+                    <!-- Aksesori Lucu -->
+                    <div class="absolute -top-2 -right-2 z-20 bg-white p-2 rounded-full shadow-md">
+                        <i class="fas fa-magic text-teal-400 text-lg animate-pulse"></i>
+                    </div>
+                </div>
+
+                <h1 class="serif-title text-3xl text-teal-900 mb-2">Shofi Lutfia Juliana</h1>
+                <p class="cute-font text-sm font-bold tracking-[3px] uppercase text-orange-400 mb-8">Penuh Keajaiban ✨</p>
+                
+                <!-- Kontak -->
+                <div class="space-y-4 text-left border-t border-dashed border-teal-100 pt-8">
+                    <div class="flex items-center gap-4 group cursor-pointer">
+                        <div class="w-11 h-11 bg-teal-50 text-teal-600 rounded-2xl flex items-center justify-center transition-all group-hover:rotate-12 group-hover:bg-teal-500 group-hover:text-white">
+                            <i class="fas fa-birthday-cake"></i>
                         </div>
-                        <div class="flex items-center gap-4 group/item hover:translate-x-1 transition-transform">
-                            <div class="w-10 h-10 bg-[#f0f4e8] text-green-800 rounded-2xl flex items-center justify-center text-sm shadow-sm">
-                                <i class="fas fa-phone text-blue-400"></i>
-                            </div>
-                            <span class="text-xs font-bold">+62 838 2742 5476</span>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold text-gray-400">Tahun Lahir</p>
+                            <p class="text-sm font-bold">12 Juli 2008</p>
                         </div>
-                        <div class="flex items-center gap-4 group/item hover:translate-x-1 transition-transform">
-                            <div class="w-10 h-10 bg-[#f0f4e8] text-green-800 rounded-2xl flex items-center justify-center text-sm shadow-sm">
-                                <i class="fas fa-map-marker-alt text-orange-400"></i>
-                            </div>
-                            <span class="text-[10px] leading-tight font-bold">Ciparay, Kab. Bandung</span>
+                    </div>
+                    <div class="flex items-center gap-4 group cursor-pointer">
+                        <div class="w-11 h-11 bg-orange-50 text-orange-400 rounded-2xl flex items-center justify-center transition-all group-hover:-rotate-12 group-hover:bg-orange-400 group-hover:text-white">
+                            <i class="fas fa-phone-alt"></i>
                         </div>
-                        <div class="flex items-center gap-4 group/item hover:translate-x-1 transition-transform">
-                            <div class="w-10 h-10 bg-[#f0f4e8] text-green-800 rounded-2xl flex items-center justify-center text-sm shadow-sm">
-                                <i class="fab fa-instagram text-purple-400"></i>
-                            </div>
-                            <span class="text-xs font-bold">@filutfiaa</span>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold text-gray-400">Hubungi Saya</p>
+                            <p class="text-sm font-bold">+62 838 2742 5476</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 group cursor-pointer">
+                        <div class="w-11 h-11 bg-purple-50 text-purple-400 rounded-2xl flex items-center justify-center transition-all group-hover:scale-110 group-hover:bg-purple-400 group-hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold text-gray-400">Instagram</p>
+                            <p class="text-sm font-bold">@filutfiaa</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 group cursor-pointer">
+                        <div class="w-11 h-11 bg-blue-50 text-blue-400 rounded-2xl flex items-center justify-center transition-all group-hover:translate-y-1 group-hover:bg-blue-400 group-hover:text-white">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] uppercase font-bold text-gray-400">Tempat Tinggal</p>
+                            <p class="text-[11px] font-bold leading-relaxed">Ciparay, Kab. Bandung</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Keahlian -->
-            <div class="soft-card p-8">
-                <h3 class="serif text-lg font-bold mb-6 flex items-center gap-2">
-                    <i class="fas fa-star star-icon"></i> Bahasa & Keahlian
-                </h3>
-                <div class="space-y-6">
-                    <div>
-                        <div class="flex justify-between text-[11px] mb-2 font-bold uppercase text-slate-500">
-                            <span>Bahasa Indonesia</span>
-                            <span>Native ✨</span>
+            <!-- Bahasa & Hobi -->
+            <div class="glass-card p-10 space-y-8">
+                <div>
+                    <h3 class="serif-title text-xl text-teal-800 mb-6 flex items-center gap-2">
+                        Bahasa <i class="fas fa-sparkles text-sm text-yellow-400"></i>
+                    </h3>
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-2">
+                                <span>Indonesia 🇮🇩</span>
+                                <span class="text-teal-600">Native</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" data-width="100%"></div></div>
                         </div>
-                        <div class="progress-bar"><div class="progress-fill" data-width="100%"></div></div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between text-[11px] mb-2 font-bold uppercase text-slate-500">
-                            <span>Bahasa Inggris</span>
-                            <span>Basic 📖</span>
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-2">
+                                <span>Inggris 🇬🇧</span>
+                                <span class="text-teal-600">Basic</span>
+                            </div>
+                            <div class="progress-bar"><div class="progress-fill" data-width="55%"></div></div>
                         </div>
-                        <div class="progress-bar"><div class="progress-fill" data-width="50%"></div></div>
                     </div>
                 </div>
-                
-                <div class="mt-8 flex flex-wrap gap-2">
-                    <span class="px-4 py-2 bg-pink-50 text-pink-700 text-[10px] font-bold uppercase rounded-full border border-pink-100">Teliti 🔍</span>
-                    <span class="px-4 py-2 bg-blue-50 text-blue-700 text-[10px] font-bold uppercase rounded-full border border-blue-100">Problem Solver 🧩</span>
-                    <span class="px-4 py-2 bg-yellow-50 text-yellow-700 text-[10px] font-bold uppercase rounded-full border border-yellow-100">Disiplin ✅</span>
+
+                <div class="pt-4">
+                    <h3 class="serif-title text-xl text-teal-800 mb-4">Hobi Saya</h3>
+                    <div class="flex items-center gap-4 p-5 bg-gradient-to-r from-teal-50 to-orange-50 rounded-3xl border border-white">
+                        <div class="w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-teal-600 floating-hobi">
+                            <i class="fas fa-book-open text-2xl"></i>
+                        </div>
+                        <span class="font-bold text-sm text-teal-900 uppercase tracking-widest">Membaca Buku</span>
+                    </div>
                 </div>
             </div>
         </aside>
 
         <!-- Main Content -->
-        <main class="lg:col-span-8 space-y-8">
+        <main class="lg:col-span-8 space-y-10">
             
             <!-- Tentang Saya -->
-            <section class="soft-card p-8 reveal group">
-                <i class="fas fa-sparkles absolute top-4 right-4 text-yellow-300 opacity-50 group-hover:animate-spin"></i>
-                <h2 class="serif text-2xl font-bold text-slate-800 mb-4 flex items-center gap-2">
-                    Profil Profesional <i class="fas fa-smile-beam flower-icon"></i>
+            <section class="glass-card p-10 reveal group relative overflow-hidden">
+                <div class="absolute -bottom-6 -right-6 opacity-5 group-hover:opacity-20 transition-all duration-700">
+                    <i class="fas fa-heart text-[120px] text-pink-400"></i>
+                </div>
+                <h2 class="serif-title text-3xl text-teal-900 mb-6 flex items-center gap-3">
+                    Halo, Saya Shofi! <i class="fas fa-smile-wink text-orange-300"></i>
                 </h2>
-                <p class="text-gray-600 leading-relaxed text-sm">
-                    "Saya adalah pribadi yang <b>suka membaca</b> dan memiliki ketertarikan tinggi dalam <b>memecahkan masalah</b> dengan teliti sampai selesai. Saya senang menonton untuk memperluas wawasan dan selalu memiliki keinginan kuat untuk mencoba hal-hal baru yang bermanfaat bagi pengembangan diri saya."
+                <p class="text-gray-600 leading-relaxed text-md font-medium italic">
+                    "Saya adalah pribadi yang <b>suka membaca</b> dan memiliki ketertarikan tinggi dalam <b>memecahkan masalah</b> dengan teliti sampai selesai. Selain gemar menonton untuk memperluas perspektif, saya juga memiliki jiwa eksploratif yang selalu ingin <b>mencoba hal-hal baru</b> guna mengembangkan diri ke arah yang lebih positif."
                 </p>
             </section>
 
-            <!-- Pengalaman Organisasi -->
-            <section class="soft-card p-8 reveal">
-                <h2 class="serif text-2xl font-bold text-slate-800 mb-8">Pengalaman Organisasi <i class="fas fa-users-crown text-sm text-green-500"></i></h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="p-6 border-2 border-green-100 bg-green-50/30 rounded-3xl hover:bg-green-50 transition-colors">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="text-[10px] font-bold bg-green-600 text-white px-2 py-0.5 rounded-lg uppercase">SMA</span>
+            <!-- Pengalaman -->
+            <section class="reveal">
+                <h2 class="serif-title text-2xl text-teal-900 mb-8 ml-4 flex items-center gap-2">
+                    Jejak Pengalaman <i class="fas fa-shoe-prints text-xs text-orange-300"></i>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="glass-card p-8 border-t-4 border-teal-400 bg-gradient-to-b from-teal-50/20 to-white">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 bg-teal-500 text-white text-[9px] font-bold rounded-full">SMA</span>
+                            <i class="fas fa-flag text-teal-200"></i>
                         </div>
-                        <h4 class="font-bold text-md text-green-800">Paskibra</h4>
-                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">Melatih kedisiplinan dan tanggung jawab melalui latihan rutin yang menantang.</p>
+                        <h4 class="font-bold text-teal-800 mb-2">Paskibra</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed italic">"Melatih kedisiplinan dan tanggung jawab, serta terbiasa mengikuti latihan rutin dan aturan ketat."</p>
                     </div>
-                    <div class="p-6 border-2 border-blue-100 bg-blue-50/30 rounded-3xl hover:bg-blue-50 transition-colors">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="text-[10px] font-bold bg-blue-500 text-white px-2 py-0.5 rounded-lg uppercase">SMP</span>
+                    <div class="glass-card p-8 border-t-4 border-orange-300 bg-gradient-to-b from-orange-50/20 to-white">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 bg-orange-400 text-white text-[9px] font-bold rounded-full">SMP</span>
+                            <i class="fas fa-desktop text-orange-200"></i>
                         </div>
-                        <h4 class="font-bold text-md text-blue-800">Ekskul Komputer</h4>
-                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">Mempelajari Microsoft Word dan dasar-dasar digital secara antusias.</p>
+                        <h4 class="font-bold text-orange-800 mb-2">Ekskul Komputer</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed italic">"Mempelajari dasar pengoperasian komputer dan mahir menggunakan Microsoft Word."</p>
                     </div>
-                    <div class="p-6 border-2 border-pink-100 bg-pink-50/30 rounded-3xl hover:bg-pink-50 transition-colors md:col-span-2">
-                        <div class="flex items-center gap-2 mb-2">
-                            <span class="text-[10px] font-bold bg-pink-500 text-white px-2 py-0.5 rounded-lg uppercase">SD</span>
+                    <div class="glass-card p-8 border-t-4 border-pink-200 bg-gradient-to-b from-pink-50/20 to-white md:col-span-2">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="px-3 py-1 bg-pink-300 text-white text-[9px] font-bold rounded-full">SD</span>
+                            <i class="fas fa-campground text-pink-200"></i>
                         </div>
-                        <h4 class="font-bold text-md text-pink-800">Pramuka</h4>
-                        <p class="text-xs text-gray-600 mt-2 leading-relaxed">Membangun fondasi kerja sama tim dan kemandirian sejak dini.</p>
+                        <h4 class="font-bold text-pink-800 mb-2">Pramuka</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed italic">"Membangun karakter kedisiplinan dan kerja sama tim yang kuat sejak usia dini."</p>
                     </div>
                 </div>
             </section>
 
             <!-- Pendidikan & Sertifikat -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <section class="soft-card p-8 reveal">
-                    <h3 class="serif text-xl font-bold mb-6 flex items-center gap-2">Pendidikan <i class="fas fa-graduation-cap text-gray-400"></i></h3>
-                    <div class="space-y-8 relative border-l-2 border-dashed border-green-100 ml-2">
-                        <div class="relative pl-8 group">
-                            <span class="absolute -left-[9px] top-1 dot bg-green-500"></span>
-                            <h4 class="text-sm font-bold text-slate-800">SMA (Lulus 2026)</h4>
-                            <p class="text-[10px] text-gray-400 font-bold italic">Saat ini sedang menempuh studi</p>
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+                <div class="md:col-span-7 glass-card p-10 reveal">
+                    <h3 class="serif-title text-2xl text-teal-900 mb-10">Pendidikan Saya</h3>
+                    <div class="space-y-10 relative border-l-2 border-dashed border-teal-100 ml-4">
+                        <div class="relative pl-10">
+                            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-teal-500 shadow-lg shadow-teal-200 animate-pulse"></div>
+                            <h4 class="font-bold text-slate-800">SMA (Lulus 2026)</h4>
+                            <p class="text-[10px] text-teal-500 font-bold uppercase mt-1">Studi Berlangsung</p>
                         </div>
-                        <div class="relative pl-8 group">
-                            <span class="absolute -left-[9px] top-1 dot bg-pink-300 shadow-pink-200"></span>
-                            <h4 class="text-sm font-bold text-slate-800">SMP (Lulus 2023)</h4>
+                        <div class="relative pl-10">
+                            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-orange-300"></div>
+                            <h4 class="font-bold text-slate-800">SMP (Lulus 2023)</h4>
                         </div>
-                        <div class="relative pl-8 group">
-                            <span class="absolute -left-[9px] top-1 dot bg-blue-300 shadow-blue-200"></span>
-                            <h4 class="text-sm font-bold text-slate-800">SD (Lulus 2020)</h4>
+                        <div class="relative pl-10">
+                            <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-gray-200"></div>
+                            <h4 class="font-bold text-slate-800">SD (Lulus 2020)</h4>
                         </div>
                     </div>
-                </section>
+                </div>
 
-                <div class="space-y-8 reveal">
-                    <div class="soft-card p-8 bg-[#fff9fa] border-pink-100">
-                        <h3 class="serif text-lg font-bold mb-4 flex items-center gap-2">Sertifikat <i class="fas fa-award text-yellow-500"></i></h3>
-                        <div class="flex items-center gap-4 p-3 bg-white rounded-2xl shadow-sm border border-pink-50">
-                            <i class="fas fa-palette text-pink-400 text-xl"></i>
-                            <div>
-                                <p class="text-sm font-bold text-slate-800">Kaligrafi Putri</p>
-                                <p class="text-[10px] uppercase text-gray-400 font-bold">SD Achievement</p>
-                            </div>
-                        </div>
+                <div class="md:col-span-5 space-y-10 reveal">
+                    <div class="glass-card p-8 text-center bg-gradient-to-br from-white to-pink-50/30">
+                        <i class="fas fa-medal text-orange-400 text-4xl mb-4 block animate-bounce"></i>
+                        <h4 class="font-bold text-sm mb-1 text-teal-900">Kaligrafi Putri</h4>
+                        <span class="text-[9px] font-bold bg-white px-3 py-1 rounded-full shadow-sm">Sertifikat SD</span>
                     </div>
-                    <div class="soft-card p-8 bg-[#f5fbf0] border-green-100">
-                        <h3 class="serif text-lg font-bold mb-4 flex items-center gap-2">Hobi <i class="fas fa-mug-hot text-brown-400"></i></h3>
-                        <div class="flex items-center gap-3">
-                            <div class="w-12 h-12 rounded-2xl bg-green-500 text-white flex items-center justify-center shadow-lg">
-                                <i class="fas fa-book-open"></i>
-                            </div>
-                            <span class="font-bold text-sm text-green-800 uppercase tracking-wider">Membaca Buku</span>
+
+                    <div class="glass-card p-8">
+                        <h3 class="serif-title text-xl text-teal-800 mb-6">Keahlian</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="cute-badge"><i class="fas fa-check-circle text-teal-400"></i> Teliti</span>
+                            <span class="cute-badge"><i class="fas fa-check-circle text-orange-300"></i> Disiplin</span>
+                            <span class="cute-badge"><i class="fas fa-check-circle text-blue-300"></i> MS Word</span>
+                            <span class="cute-badge"><i class="fas fa-check-circle text-pink-300"></i> Responsif</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Footer -->
-            <footer class="text-center py-6 reveal group">
-                <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 group-hover:text-pink-400 transition-colors">
-                    Shofi Lutfia Juliana <i class="fas fa-heart"></i> 2026
-                </p>
-                <div class="mt-2 text-xs flex justify-center gap-2 opacity-30 group-hover:opacity-100 transition-opacity">
-                    <i class="fas fa-star star-icon"></i>
-                    <i class="fas fa-heart heart-icon"></i>
-                    <i class="fas fa-seedling flower-icon"></i>
+            <!-- Footer Lucu -->
+            <footer class="text-center py-12 reveal">
+                <div class="flex justify-center gap-4 mb-8">
+                    <i class="fas fa-star text-yellow-300 text-xs animate-spin-slow" style="animation-duration: 4s;"></i>
+                    <i class="fas fa-heart text-pink-300 text-xs animate-pulse"></i>
+                    <i class="fas fa-star text-yellow-300 text-xs animate-spin-slow"></i>
                 </div>
+                <p class="cute-font text-[10px] font-bold tracking-[6px] uppercase text-gray-400">Dibuat dengan cinta <i class="fas fa-heart text-peach mx-1"></i> Shofi Lutfia Juliana</p>
             </footer>
         </main>
     </div>
 
     <script>
-        // Membuat elemen dekorasi melayang
-        const container = document.getElementById('decorations-container');
-        const icons = ['fa-heart', 'fa-star', 'fa-seedling', 'fa-smile', 'fa-leaf'];
-        const colors = ['#ffb7c5', '#ffd700', '#ff6b6b', '#6b8e23', '#a2c11c'];
+        // Membuat Partikel Melayang (Love, Bunga, Bintang)
+        const container = document.getElementById('particles-container');
+        const particleIcons = ['fa-heart', 'fa-star', 'fa-seedling', 'fa-flower-tulip', 'fa-certificate'];
+        const particleColors = ['#ffab91', '#80cbc4', '#fce4ec', '#fff9c4', '#e1f5fe'];
 
-        function createDecoration() {
-            const iconClass = icons[Math.floor(Math.random() * icons.length)];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            const decor = document.createElement('i');
+        function createParticle() {
+            const particle = document.createElement('i');
+            const icon = particleIcons[Math.floor(Math.random() * particleIcons.length)];
+            const color = particleColors[Math.floor(Math.random() * particleColors.length)];
             
-            decor.className = `fas ${iconClass} decor-item`;
-            decor.style.left = Math.random() * 100 + 'vw';
-            decor.style.fontSize = (Math.random() * 20 + 10) + 'px';
-            decor.style.color = color;
-            decor.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            particle.className = `fas ${icon} particle`;
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.color = color;
+            particle.style.fontSize = Math.random() * 20 + 10 + 'px';
+            particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+            particle.style.animationDelay = Math.random() * 5 + 's';
             
-            container.appendChild(decor);
-            
+            container.appendChild(particle);
+
+            // Hapus partikel setelah animasi selesai agar tidak memberatkan browser
             setTimeout(() => {
-                decor.remove();
-            }, 10000);
+                particle.remove();
+            }, 15000);
         }
 
-        setInterval(createDecoration, 1000);
+        // Loop pembuatan partikel
+        setInterval(createParticle, 1500);
 
-        // Animasi Reveal saat Scroll
+        // Reveal Animasi saat Scroll
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -338,7 +415,11 @@
         }
 
         window.addEventListener("scroll", reveal);
-        window.addEventListener("load", reveal);
+        window.addEventListener("load", () => {
+            reveal();
+            // Start awal partikel
+            for(let i=0; i<10; i++) createParticle();
+        });
     </script>
 </body>
 </html>
